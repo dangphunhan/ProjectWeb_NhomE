@@ -1,0 +1,44 @@
+[2022-11-01 09:42:42] local.ERROR: Uncaught ErrorException: include(D:\CDWeb2\Project_CDWeb1_NhomE - Copy\vendor\composer/../../app/Http/Middleware/XSS.php): failed to open stream: No such file or directory in D:\CDWeb2\Project_CDWeb1_NhomE - Copy\vendor\composer\ClassLoader.php:571
+Stack trace:
+#0 D:\CDWeb2\Project_CDWeb1_NhomE - Copy\vendor\composer\ClassLoader.php(571): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'include(D:\\CDWe...', 'D:\\CDWeb2\\Proje...', 571, Array)
+#1 D:\CDWeb2\Project_CDWeb1_NhomE - Copy\vendor\composer\ClassLoader.php(571): include()
+#2 D:\CDWeb2\Project_CDWeb1_NhomE - Copy\vendor\composer\ClassLoader.php(428): Composer\Autoload\includeFile('D:\\CDWeb2\\Proje...')
+#3 [internal function]: Composer\Autoload\ClassLoader->loadClass('App\\Http\\Middle...')
+#4 [internal function]: spl_autoload_call('App\\Http\\Middle...')
+#5 Command line code(1): ReflectionMethod->__construct('App\\Http\\Middle...', 'handle')
+#6 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ErrorException: include(D:\\CDWeb2\\Project_CDWeb1_NhomE - Copy\\vendor\\composer/../../app/Http/Middleware/XSS.php): failed to open stream: No such file or directory in D:\\CDWeb2\\Project_CDWeb1_NhomE - Copy\\vendor\\composer\\ClassLoader.php:571
+Stack trace:
+#0 D:\\CDWeb2\\Project_CDWeb1_NhomE - Copy\\vendor\\composer\\ClassLoader.php(571): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(2, 'include(D:\\\\CDWe...', 'D:\\\\CDWeb2\\\\Proje...', 571, Array)
+#1 D:\\CDWeb2\\Project_CDWeb1_NhomE - Copy\\vendor\\composer\\ClassLoader.php(571): include()
+#2 D:\\CDWeb2\\Project_CDWeb1_NhomE - Copy\\vendor\\composer\\ClassLoader.php(428): Composer\\Autoload\\includeFile('D:\\\\CDWeb2\\\\Proje...')
+#3 [internal function]: Composer\\Autoload\\ClassLoader->loadClass('App\\\\Http\\\\Middle...')
+#4 [internal function]: spl_autoload_call('App\\\\Http\\\\Middle...')
+#5 Command line code(1): ReflectionMethod->__construct('App\\\\Http\\\\Middle...', 'handle')
+#6 {main}
+  thrown at D:\\CDWeb2\\Project_CDWeb1_NhomE - Copy\\vendor\\composer\\ClassLoader.php:571)
+[stacktrace]
+#0 {main}
+"} 
+[2022-11-01 09:46:11] local.ERROR: Uncaught ErrorException: include(D:\CDWeb2\Project_CDWeb1_NhomE - Copy\vendor\composer/../../app/Http/Middleware/XSS.php): failed to open stream: No such file or directory in D:\CDWeb2\Project_CDWeb1_NhomE - Copy\vendor\composer\ClassLoader.php:571
+Stack trace:
+#0 D:\CDWeb2\Project_CDWeb1_NhomE - Copy\vendor\composer\ClassLoader.php(571): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'include(D:\\CDWe...', 'D:\\CDWeb2\\Proje...', 571, Array)
+#1 D:\CDWeb2\Project_CDWeb1_NhomE - Copy\vendor\composer\ClassLoader.php(571): include()
+#2 D:\CDWeb2\Project_CDWeb1_NhomE - Copy\vendor\composer\ClassLoader.php(428): Composer\Autoload\includeFile('D:\\CDWeb2\\Proje...')
+#3 [internal function]: Composer\Autoload\ClassLoader->loadClass('App\\Http\\Middle...')
+#4 [internal function]: spl_autoload_call('App\\Http\\Middle...')
+#5 Command line code(1): ReflectionMethod->__construct('App\\Http\\Middle...', 'handle')
+#6 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ErrorException: include(D:\\CDWeb2\\Project_CDWeb1_NhomE - Copy\\vendor\\composer/../../app/Http/Middleware/XSS.php): failed to open stream: No such file or directory in D:\\CDWeb2\\Project_CDWeb1_NhomE - Copy\\vendor\\composer\\ClassLoader.php:571
+Stack trace:
+#0 D:\\CDWeb2\\Project_CDWeb1_NhomE - Copy\\vendor\\composer\\ClassLoader.php(571): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(2, 'include(D:\\\\CDWe...', 'D:\\\\CDWeb2\\\\Proje...', 571, Array)
+#1 D:\\CDWeb2\\Project_CDWeb1_NhomE - Copy\\vendor\\composer\\ClassLoader.php(571): include()
+#2 D:\\CDWeb2\\Project_CDWeb1_NhomE - Copy\\vendor\\composer\\ClassLoader.php(428): Composer\\Autoload\\includeFile('D:\\\\CDWeb2\\\\Proje...')
+#3 [internal function]: Composer\\Autoload\\ClassLoader->loadClass('App\\\\Http\\\\Middle...')
+#4 [internal function]: spl_autoload_call('App\\\\Http\\\\Middle...')
+#5 Command line code(1): ReflectionMethod->__construct('App\\\\Http\\\\Middle...', 'handle')
+#6 {main}
+  thrown at D:\\CDWeb2\\Project_CDWeb1_NhomE - Copy\\vendor\\composer\\ClassLoader.php:571)
+[stacktrace]
+#0 {main}
+"} 
