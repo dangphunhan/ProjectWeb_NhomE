@@ -126,4 +126,4 @@ endif; ?>" name="password_confirmation" type="password" required autocomplete="n
         </div>
     </section>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\CDWeb2\Project_CDWeb1_NhomE - Copy\resources\views/users/account.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\CDWeb2\Project_CDWeb1_NhomE - ver1\resources\views/users/account.blade.php ENDPATH**/ ?>

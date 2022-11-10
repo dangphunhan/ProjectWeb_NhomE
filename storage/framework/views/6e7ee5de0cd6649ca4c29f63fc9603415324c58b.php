@@ -2,14 +2,6 @@
   <ul class="navbar-nav mr-3">
     <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg" ><i class="mdi mdi-menu" style="font-size: 24px;"></i></a></li>
   </ul>
-  <div class="search-element">
-    <div class="input-group">
-        <input class="form-control" name="query" type="text" placeholder="<?php echo e(__('Search')); ?>" aria-label="Search" data-width="250" autocomplete="off">
-        <div class="input-group-append">
-            <button class="btn" type="button"><i class="dripicons-search"></i></button>
-        </div>
-    </div>
-  </div>
 </div>
 <ul class="navbar-nav navbar-right">
   <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
@@ -80,4 +72,4 @@
     </div>
   </li>
 </ul>
-<?php /**PATH D:\CDWeb2\Project_CDWeb1_NhomE - Copy\resources\views/partials/topnav.blade.php ENDPATH**/ ?>
+<?php /**PATH D:\CDWeb2\Project_CDWeb1_NhomE - ver1\resources\views/partials/topnav.blade.php ENDPATH**/ ?>

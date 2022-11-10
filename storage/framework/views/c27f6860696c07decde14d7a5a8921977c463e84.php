@@ -1,27 +1,27 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 
     <title>Dominant</title>
-    <link rel="shortcut icon" href="{{asset(Storage::url('logo/th.jpg'))}}">
+    <link rel="shortcut icon" href="<?php echo e(asset(Storage::url('logo/th.jpg'))); ?>">
 
     <!-- General CSS Files -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/css/select2.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="{{ asset('assets/css/iziToast.min.css') }}">
+    <link rel="stylesheet" href="<?php echo e(asset('assets/css/iziToast.min.css')); ?>">
 
     <!-- Template CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/components.css')}}">
-    <link rel="stylesheet" href="{{ asset('assets/css/icons.min.css')}}">
-    <link href="{{ asset('assets/css/easy-autocomplete.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo e(asset('assets/css/style.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('assets/css/components.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('assets/css/icons.min.css')); ?>">
+    <link href="<?php echo e(asset('assets/css/easy-autocomplete.min.css')); ?>" rel="stylesheet">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    @stack('style')
+    <?php echo $__env->yieldPushContent('style'); ?>
 </head>
 
 <body>
@@ -33,18 +33,18 @@
         <div class="main-wrapper">
             <div class="navbar-bg"></div>
             <nav class="navbar navbar-expand-lg main-navbar">
-                @include('partials.topnav')
+                <?php echo $__env->make('partials.topnav', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
             </nav>
             <div class="main-sidebar">
-                @include('partials.sidebar')
+                <?php echo $__env->make('partials.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
             </div>
 
             <!-- Main Content -->
             <div class="main-content">
-                @yield('content')
+                <?php echo $__env->yieldContent('content'); ?>
             </div>
             <footer class="main-footer">
-                @include('partials.footer')
+                <?php echo $__env->make('partials.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
             </footer>
         </div>
     </div>
@@ -62,24 +62,24 @@
     </div>
 </div>
 
-@if(Auth::user()->type != 'admin')
+<?php if(Auth::user()->type != 'admin'): ?>
     <div id="modelCreateWorkspace" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modelCreateWorkspaceLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="modelCreateWorkspaceLabel">{{ __('Create Your Workspace') }}</h4>
+                    <h4 class="modal-title" id="modelCreateWorkspaceLabel"><?php echo e(__('Create Your Workspace')); ?></h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
                 <div class="modal-body">
-                    <form class="pl-3 pr-3" method="post" action="{{ route('add_workspace') }}">
-                        @csrf
+                    <form class="pl-3 pr-3" method="post" action="<?php echo e(route('add_workspace')); ?>">
+                        <?php echo csrf_field(); ?>
                         <div class="form-group">
-                            <label for="workspacename">{{ __('Name') }}</label>
-                            <input class="form-control" type="text" id="workspacename" name="name" required="" placeholder="{{ __('Workspace Name') }}">
+                            <label for="workspacename"><?php echo e(__('Name')); ?></label>
+                            <input class="form-control" type="text" id="workspacename" name="name" required="" placeholder="<?php echo e(__('Workspace Name')); ?>">
                         </div>
 
                         <div class="form-group">
-                            <button class="btn btn-primary" type="submit">{{ __('Create Workspace') }}</button>
+                            <button class="btn btn-primary" type="submit"><?php echo e(__('Create Workspace')); ?></button>
                         </div>
 
                     </form>
@@ -87,7 +87,7 @@
             </div>
         </div>
     </div>
-@endif
+<?php endif; ?>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
@@ -97,12 +97,12 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.min.js"></script>
 
-<script src="{{ asset('assets/js/iziToast.min.js') }}"></script>
-<script src="{{ asset('assets/js/stisla.js') }}"></script>
-<script src="{{ asset('assets/js/scripts.js') }}"></script>
-<script src="{{ asset('assets/js/scrollreveal.min.js') }}"></script>
-<script src="{{ asset('assets/js/custom.js') }}"></script>
-
+<script src="<?php echo e(asset('assets/js/iziToast.min.js')); ?>"></script>
+<script src="<?php echo e(asset('assets/js/stisla.js')); ?>"></script>
+<script src="<?php echo e(asset('assets/js/scripts.js')); ?>"></script>
+<script src="<?php echo e(asset('assets/js/scrollreveal.min.js')); ?>"></script>
+<script src="<?php echo e(asset('assets/js/custom.js')); ?>"></script>
 </body>
 
 </html>
+<?php /**PATH D:\CDWeb2\Project_CDWeb1_NhomE - ver1\resources\views/layouts/main.blade.php ENDPATH**/ ?>

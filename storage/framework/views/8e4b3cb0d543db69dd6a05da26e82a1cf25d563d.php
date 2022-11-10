@@ -21,19 +21,19 @@
               </a>
           </li> 
           <li class="<?php echo e((Request::route()->getName() == 'users.index') ? ' active' : ''); ?>">
-              <a href="<?php echo e(route('users.index',$currantWorkspace->slug)); ?>">
+              <a href=" <?php echo e(route('users.index',$currantWorkspace->slug)); ?>">
                   <i class="dripicons-network-3"></i>
                   <span> <?php echo e(__('Users')); ?> </span>
               </a>
           </li>
           <li class="<?php echo e((Request::route()->getName() == 'calender.index') ? ' active' : ''); ?>">
-              <a href="<?php echo e(route('calender.index',$currantWorkspace->slug)); ?>">
+              <a href="#">
                   <i class="dripicons-calendar"></i>
                   <span> <?php echo e(__('Calendar')); ?> </span>
               </a>
           </li>
           <li class="<?php echo e((Request::route()->getName() == 'notes.index') ? ' active' : ''); ?>">
-              <a href="<?php echo e(route('notes.index',$currantWorkspace->slug)); ?>">
+              <a href="#">
                   <i class="dripicons-clipboard"></i>
                   <span> <?php echo e(__('Notes')); ?> </span>
               </a>
@@ -41,4 +41,4 @@
       <?php endif; ?>
     </ul>
 </aside>
-<?php /**PATH D:\CDWeb2\Project_CDWeb1_NhomE - Copy\resources\views/partials/sidebar.blade.php ENDPATH**/ ?>
+<?php /**PATH D:\CDWeb2\Project_CDWeb1_NhomE - ver1\resources\views/partials/sidebar.blade.php ENDPATH**/ ?>

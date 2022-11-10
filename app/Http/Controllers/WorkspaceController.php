@@ -31,11 +31,26 @@ class WorkspaceController extends Controller
         UserWorkspace::create(['user_id'=>$objUser->id,'workspace_id'=>$objWorkspace->id,'permission'=>'Owner']);
 
         $objUser->currant_workspace = $objWorkspace->id;
-        $objUser->update();
-
         return redirect()->route('home',$objWorkspace->slug)->with('success',__('Workspace Created Successfully!'));
     }
 
+        /**
+     * Leave the specified resource from storage.
+     *
+     * @param  Int  $workspaceID
+     * @return \Illuminate\Http\Response
+     */
+    public function leave($workspaceID)
+    {
+        $objUser = Auth::user();
+
+        $userProjects = Project::where('workspace', '=', $workspaceID)->get();
+        foreach ($userProjects as $userProject){
+            UserProject::where('project_id','=',$userProject->id)->where('user_id', '=', $objUser->id)->delete();
+        }
+        UserWorkspace::where('workspace_id', '=', $workspaceID)->where('user_id', '=', $objUser->id)->delete();
+        return redirect()->route('home')->with('success',__('Workspace Leave Successfully!'));
+    }
     /**
      * Remove the specified resource from storage.
      *
@@ -57,24 +72,6 @@ class WorkspaceController extends Controller
     }
 
     /**
-     * Leave the specified resource from storage.
-     *
-     * @param  Int  $workspaceID
-     * @return \Illuminate\Http\Response
-     */
-    public function leave($workspaceID)
-    {
-        $objUser = Auth::user();
-
-        $userProjects = Project::where('workspace', '=', $workspaceID)->get();
-        foreach ($userProjects as $userProject){
-            UserProject::where('project_id','=',$userProject->id)->where('user_id', '=', $objUser->id)->delete();
-        }
-        UserWorkspace::where('workspace_id', '=', $workspaceID)->where('user_id', '=', $objUser->id)->delete();
-        return redirect()->route('home')->with('success',__('Workspace Leave Successfully!'));
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
      * @param  Int  $workspaceID
@@ -87,13 +84,5 @@ class WorkspaceController extends Controller
         $objUser->update();
         $objWorkspace = Workspace::find($workspaceID);
         return redirect()->route('home',$objWorkspace->slug)->with('success',__('Workspace Change Successfully!'));
-    }
-
-    public function changeLangWorkspace($workspaceID,$lang)
-    {
-        $workspace = Workspace::find($workspaceID);
-        $workspace->lang = $lang;
-        $workspace->save();
-        return redirect()->route('home',$workspace->slug)->with('success',__('Workspace Language Change Successfully!'));
     }
 }

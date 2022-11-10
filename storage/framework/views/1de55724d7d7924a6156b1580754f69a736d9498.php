@@ -41,9 +41,7 @@
                     <?php endif; ?>
                     <?php echo $__env->yieldContent('content'); ?>
                     <div class="simple-footer">
-                        Copyright &copy; <?php echo e(env('APP_NAME','Taskly')); ?> <?php echo e(date('Y')); ?>
-
-                    </div>
+                        Copyright &copy; <?php echo e(date('Y')); ?><div class="bullet"></div> Thu Duc College of Technology <div class="bullet"></div> Design By NhomE                    </div>
                 </div>
             </div>
         </div>

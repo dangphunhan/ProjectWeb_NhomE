@@ -30,7 +30,6 @@ use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
-
     public function getProjectChart($arrParam){
         $arrDuration = [];
         if($arrParam['duration']){
@@ -91,6 +90,4 @@ class ProjectController extends Controller
         }
         return $arrTask;
     }
-
-
 }
