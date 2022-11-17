@@ -16,6 +16,7 @@
     <img @if(Auth::user()->avatar) src="{{asset('/storage/avatars/'.Auth::user()->avatar)}}" @else avatar="{{ Auth::user()->name }}" @endif alt="user-image" class="rounded-circle mr-1">
     <div class="d-sm-none d-lg-inline-block">Hi, {{ Auth::user()->name }}</div></a>
     <div class="dropdown-menu dropdown-menu-right">
+<<<<<<< HEAD
       @foreach(Auth::user()->workspace as $workspace)
 
           <a href="@if($currantWorkspace->id == $workspace->id)#@else{{ route('change_workspace',$workspace->id) }}@endif" title="{{ $workspace->name }}" class="dropdown-item notify-item">
@@ -69,6 +70,8 @@
         <i class="mdi mdi-account-circle mr-1"></i> {{ __('My Account')}}
       </a>
       <div class="dropdown-divider"></div>
+=======
+>>>>>>> login
       <a href="{{ route('logout') }}" class="dropdown-item has-icon text-danger" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
         <i class="mdi mdi-logout mr-1"></i> {{ __('Logout') }}
       </a>

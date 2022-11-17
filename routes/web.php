@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
+<<<<<<< HEAD
 
 
 // User
@@ -38,6 +39,7 @@ Route::delete('/my-account',['as' => 'delete.avatar','uses' =>'UserController@de
 Route::get('/','HomeController@index');
 Route::get('/{slug?}', ['as' => 'home','uses' =>'HomeController@index']);
 
+<<<<<<< HEAD
 // note
 Route::get('/{slug}/notes',['as' => 'notes.index','uses' =>'NoteController@index']);
 Route::get('/{slug}/notes/create',['as' => 'notes.create','uses' =>'NoteController@create']);
@@ -45,3 +47,17 @@ Route::post('/{slug}/notes',['as' => 'notes.store','uses' =>'NoteController@stor
 Route::get('/{slug}/notes/edit/{id}',['as' => 'notes.edit','uses' =>'NoteController@edit']);
 Route::put('/{slug}/notes/{id}',['as' => 'notes.update','uses' =>'NoteController@update']);
 Route::delete('/{slug}/notes/{id}',['as' => 'notes.destroy','uses' =>'NoteController@destroy']);
+=======
+
+// Workspace
+Route::post('/workspace',['as' => 'add_workspace','uses' =>'WorkspaceController@store']);
+Route::delete('/workspace/{id}',['as' => 'delete_workspace','uses' =>'WorkspaceController@destroy']);
+Route::delete('/workspace/leave/{id}',['as' => 'leave_workspace','uses' =>'WorkspaceController@leave']);
+Route::get('/workspace/{id}',['as' => 'change_workspace','uses' =>'WorkspaceController@changeCurrantWorkspace']);
+=======
+//Home
+Route::get('/','HomeController@index')->middleware(['auth','XSS']);
+Route::get('/{slug?}', ['as' => 'home','uses' => 'HomeController@index'])->middleware(['auth','XSS']);
+>>>>>>> login
+
+>>>>>>> origin/master

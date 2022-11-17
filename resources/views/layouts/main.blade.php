@@ -62,6 +62,7 @@
     </div>
 </div>
 
+<<<<<<< HEAD
 @if(Auth::user()->type != 'admin')
     <div id="modelCreateWorkspace" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modelCreateWorkspaceLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -88,6 +89,8 @@
         </div>
     </div>
 @endif
+=======
+>>>>>>> login
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
@@ -103,6 +106,7 @@
 <script src="{{ asset('assets/js/scrollreveal.min.js') }}"></script>
 <script src="{{ asset('assets/js/custom.js') }}"></script>
 
+<<<<<<< HEAD
 @if(isset($currantWorkspace) && $currantWorkspace)
 <script src="{{ asset('assets/js/jquery.easy-autocomplete.min.js') }}"></script>
 
@@ -132,6 +136,9 @@
     $(".search-element input").easyAutocomplete(options);
 </script>
 @endif
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 @stack('scripts')
 
 @if ($message = Session::get('success'))
@@ -145,6 +152,8 @@
 @if ($message = Session::get('info'))
     <script>toastr('Info','{!! $message !!}','info')</script>
 @endif
+=======
+>>>>>>> login
 </body>
 
 </html>
