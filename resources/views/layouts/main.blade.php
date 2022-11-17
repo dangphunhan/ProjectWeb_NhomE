@@ -103,6 +103,35 @@
 <script src="{{ asset('assets/js/scrollreveal.min.js') }}"></script>
 <script src="{{ asset('assets/js/custom.js') }}"></script>
 
+@if(isset($currantWorkspace) && $currantWorkspace)
+<script src="{{ asset('assets/js/jquery.easy-autocomplete.min.js') }}"></script>
+
+<script>
+    var options = {
+        url: function(phrase) {
+            return "{{route('search.json',$currantWorkspace->slug)}}/" + phrase ;
+        },
+        categories: [
+            {
+                listLocation: "Projects",
+                header: "{{ __('Projects') }}"
+            },
+            {
+                listLocation: "Tasks",
+                header: "{{ __('Tasks') }}"
+            }
+        ],
+        getValue: "text",
+        template: {
+            type: "links",
+            fields: {
+                link: "link"
+            }
+        }
+    };
+    $(".search-element input").easyAutocomplete(options);
+</script>
+@endif
 @stack('scripts')
 
 @if ($message = Session::get('success'))

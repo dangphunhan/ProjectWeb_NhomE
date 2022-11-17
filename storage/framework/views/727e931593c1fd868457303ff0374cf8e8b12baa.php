@@ -1,5 +1,4 @@
 <?php $__env->startSection('content'); ?>
-
     <section class="section">
         <?php if($currantWorkspace): ?>
             <h2 class="section-title"><?php echo e(__('Dashboard')); ?></h2>
