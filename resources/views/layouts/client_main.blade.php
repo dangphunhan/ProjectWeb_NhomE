@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name') }}</title>
+    <title>{{ config('app.name', 'Taskly') }}</title>
     <link rel="shortcut icon" href="{{ asset('assets/img/favicon.ico') }}">
 
     <!-- General CSS Files -->

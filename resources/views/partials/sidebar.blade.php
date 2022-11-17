@@ -15,21 +15,15 @@
       </li>
       @if(isset($currantWorkspace) && $currantWorkspace)
           <li class="{{ (Request::route()->getName() == 'projects.index') ? ' active' : '' }}">
-              <a class="nav-link" href="{{ route('projects.index',$currantWorkspace->slug) }}">
+              <a class="nav-link" href="#">
                   <i class="dripicons-briefcase"></i>
                   <span> {{ __('Projects') }} </span>
               </a>
           </li> 
           <li class="{{ (Request::route()->getName() == 'users.index') ? ' active' : '' }}">
-              <a href=" {{ route('users.index',$currantWorkspace->slug) }}">
+              <a href="{{ route('users.index',$currantWorkspace->slug) }}">
                   <i class="dripicons-network-3"></i>
                   <span> {{ __('Users') }} </span>
-              </a>
-          </li>
-          <li class="{{ (Request::route()->getName() == 'calender.index') ? ' active' : '' }}">
-              <a href="#">
-                  <i class="dripicons-calendar"></i>
-                  <span> {{ __('Calendar') }} </span>
               </a>
           </li>
           <li class="{{ (Request::route()->getName() == 'notes.index') ? ' active' : '' }}">

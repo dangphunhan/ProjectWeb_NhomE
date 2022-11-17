@@ -26,12 +26,6 @@
                   <span> <?php echo e(__('Users')); ?> </span>
               </a>
           </li>
-          <li class="<?php echo e((Request::route()->getName() == 'calender.index') ? ' active' : ''); ?>">
-              <a href="<?php echo e(route('calender.index',$currantWorkspace->slug)); ?>">
-                  <i class="dripicons-calendar"></i>
-                  <span> <?php echo e(__('Calendar')); ?> </span>
-              </a>
-          </li>
           <li class="<?php echo e((Request::route()->getName() == 'notes.index') ? ' active' : ''); ?>">
               <a href="<?php echo e(route('notes.index',$currantWorkspace->slug)); ?>">
                   <i class="dripicons-clipboard"></i>
