@@ -2,6 +2,14 @@
   <ul class="navbar-nav mr-3">
     <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg" ><i class="mdi mdi-menu" style="font-size: 24px;"></i></a></li>
   </ul>
+  <div class="search-element">
+    <div class="input-group">
+        <input class="form-control" name="query" type="text" placeholder="{{__('Search')}}" aria-label="Search" data-width="250" autocomplete="off">
+        <div class="input-group-append">
+            <button class="btn" type="button"><i class="dripicons-search"></i></button>
+        </div>
+    </div>
+  </div>
 </div>
 <ul class="navbar-nav navbar-right">
   <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
@@ -56,6 +64,10 @@
       @endif
 
         <div class="dropdown-divider"></div>
+
+      <a href="{{ route('users.my.account') }}" class="dropdown-item has-icon">
+        <i class="mdi mdi-account-circle mr-1"></i> {{ __('My Account')}}
+      </a>
       <div class="dropdown-divider"></div>
       <a href="{{ route('logout') }}" class="dropdown-item has-icon text-danger" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
         <i class="mdi mdi-logout mr-1"></i> {{ __('Logout') }}
