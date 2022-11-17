@@ -1,130 +1,122 @@
-<?php $__env->startSection('content'); ?>
+@extends('layouts.main')
+
+@section('content')
 
     <section class="section">
 
         <div class="row mb-2">
             <div class="col-sm-4">
                 <h2 class="section-title">
-                    <?php echo e(__('Task')); ?>
-
+                    {{ __('Task')}}
                 </h2>
             </div>
             <div class="col-sm-8">
                 <div class="text-sm-right">
                     <div class="btn-group mt-4">
-                        <?php if($currantWorkspace && $currantWorkspace->permission == 'Owner'): ?>
+                        @if($currantWorkspace && $currantWorkspace->permission == 'Owner')
                             <a href="#" class="btn btn-primary ml-3" data-ajax-popup="true" data-size="lg"
-                               data-title="<?php echo e(__('Create New Task')); ?>"
-                               data-url="<?php echo e(route('tasks.create',[$currantWorkspace->slug,$project->id])); ?>"><i class="mdi mdi-plus"></i> <?php echo e(__('Add New')); ?></a>
-                        <?php endif; ?>
+                               data-title="{{ __('Create New Task') }}"
+                               data-url="{{route('tasks.create',[$currantWorkspace->slug,$project->id])}}"><i class="mdi mdi-plus"></i> {{ __('Add New')}}</a>
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
 
-        <?php if($project && $currantWorkspace): ?>
+        @if($project && $currantWorkspace)
             <div class="row">
                 <div class="col-12">
 
-                    <div class="board" data-plugin="dragula" data-containers='<?php echo e(json_encode($statusClass)); ?>'>
+                    <div class="board" data-plugin="dragula" data-containers='{{json_encode($statusClass)}}'>
 
-                        <?php $__currentLoopData = $tasks; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $status => $task): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        @foreach($tasks as $status => $task)
                             <div class="tasks animated">
-                                <div class="mt-0 task-header text-uppercase"><?php echo e(__(ucwords($status))); ?> (<span class="count"><?php echo e(count($task)); ?></span>)</div>
-                                <div id="<?php echo e('task-list-'.str_replace(' ','_',$status)); ?>" data-status="<?php echo e($status); ?>" class="task-list-items">
-                                <?php $__currentLoopData = $task; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $taskDetail): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
->>>>>>> login
-=======
->>>>>>> project
-                                        <div class="card mb-0" id="<?php echo e($taskDetail->id); ?>">
+                                <div class="mt-0 task-header text-uppercase">{{__(ucwords($status))}} (<span class="count">{{count($task)}}</span>)</div>
+                                <div id="{{'task-list-'.str_replace(' ','_',$status)}}" data-status="{{$status}}" class="task-list-items">
+                                @foreach($task as $taskDetail)
+                                        <div class="card mb-0" id="{{$taskDetail->id}}">
                                             <div class="card-body p-3">
                                                 <div class="dropdown float-right">
                                                     <a href="#" class="dropdown-toggle text-muted" data-toggle="dropdown" aria-expanded="false">
                                                         <i class="dripicons-gear"></i>
                                                     </a>
                                                     <div class="dropdown-menu dropdown-menu-right">
-                                                    <?php if($currantWorkspace->permission == 'Owner'): ?>
-                                                            <a href="#" class="dropdown-item" data-ajax-popup="true" data-size="lg" data-title="<?php echo e(__('Edit Task')); ?>" data-url="<?php echo e(route('tasks.edit',[$currantWorkspace->slug,$taskDetail->project_id,$taskDetail->id])); ?>">
-                                                                <i class="mdi mdi-pencil mr-1"></i><?php echo e(__('Edit')); ?></a>
-                                                            <a href="#" class="dropdown-item" onclick="(confirm('Are you sure ?')?document.getElementById('delete-form-<?php echo e($taskDetail->id); ?>').submit(): '');">
-                                                                <i class="mdi mdi-delete mr-1"></i><?php echo e(__('Delete')); ?></a>
-                                                            <form id="delete-form-<?php echo e($taskDetail->id); ?>" action="<?php echo e(route('tasks.destroy',[$currantWorkspace->slug,$taskDetail->project_id,$taskDetail->id])); ?>" method="POST" style="display: none;">
-                                                                <?php echo csrf_field(); ?>
-                                                                <?php echo method_field('DELETE'); ?>
+                                                    @if($currantWorkspace->permission == 'Owner')
+                                                            <a href="#" class="dropdown-item" data-ajax-popup="true" data-size="lg" data-title="{{ __('Edit Task') }}" data-url="{{route('tasks.edit',[$currantWorkspace->slug,$taskDetail->project_id,$taskDetail->id])}}">
+                                                                <i class="mdi mdi-pencil mr-1"></i>{{__('Edit')}}</a>
+                                                            <a href="#" class="dropdown-item" onclick="(confirm('Are you sure ?')?document.getElementById('delete-form-{{$taskDetail->id}}').submit(): '');">
+                                                                <i class="mdi mdi-delete mr-1"></i>{{__('Delete')}}</a>
+                                                            <form id="delete-form-{{$taskDetail->id}}" action="{{ route('tasks.destroy',[$currantWorkspace->slug,$taskDetail->project_id,$taskDetail->id]) }}" method="POST" style="display: none;">
+                                                                @csrf
+                                                                @method('DELETE')
                                                             </form>
-                                                    <?php else: ?>
-                                                            <a href="#" class="dropdown-item"><i class="mdi mdi-exit-to-app mr-1"></i><?php echo e(__('Leave')); ?></a>
-                                                        <?php endif; ?>
+                                                    @else
+                                                            <a href="#" class="dropdown-item"><i class="mdi mdi-exit-to-app mr-1"></i>{{ __('Leave')}}</a>
+                                                        @endif
                                                     </div>
                                                 </div>
                                                 <div>
-                                                    <a href="#" data-ajax-popup="true" data-size="lg" data-title="<?php echo e($taskDetail->title); ?> <?php if($taskDetail->priority=="High"): ?><span class='badge badge-danger ml-2'><?php echo e(__('High')); ?></span><?php elseif($taskDetail->priority=="Medium"): ?><span class='badge badge-warning'><?php echo e(__('Medium')); ?></span><?php else: ?><span class='badge badge-info'><?php echo e(__('Low')); ?></span><?php endif; ?>" data-url="<?php echo e(route('tasks.show',[$currantWorkspace->slug,$taskDetail->project_id,$taskDetail->id])); ?>"
-                                                       class="text-body"><?php echo e($taskDetail->title); ?></a>
+                                                    <a href="#" data-ajax-popup="true" data-size="lg" data-title="{{$taskDetail->title}} @if($taskDetail->priority=="High")<span class='badge badge-danger ml-2'>{{ __('High')}}</span>@elseif($taskDetail->priority=="Medium")<span class='badge badge-warning'>{{ __('Medium')}}</span>@else<span class='badge badge-info'>{{ __('Low')}}</span>@endif" data-url="{{route('tasks.show',[$currantWorkspace->slug,$taskDetail->project_id,$taskDetail->id])}}"
+                                                       class="text-body">{{$taskDetail->title}}</a>
                                                 </div>
-                                                <?php if($taskDetail->priority=="High"): ?>
-                                                    <span class="badge badge-danger"><?php echo e(__('High')); ?></span>
-                                                <?php elseif($taskDetail->priority=="Medium"): ?>
-                                                    <span class="badge badge-info"><?php echo e(__('Medium')); ?></span>
-                                                <?php else: ?>
-                                                    <span class="badge badge-success"><?php echo e(__('Low')); ?></span>
-                                                <?php endif; ?>
+                                                @if($taskDetail->priority=="High")
+                                                    <span class="badge badge-danger">{{ __('High')}}</span>
+                                                @elseif($taskDetail->priority=="Medium")
+                                                    <span class="badge badge-info">{{ __('Medium')}}</span>
+                                                @else
+                                                    <span class="badge badge-success">{{ __('Low')}}</span>
+                                                @endif
 
                                                 <p class="mt-2 mb-2">
                                                     <span class="text-nowrap d-inline-block">
                                                         <i class="mdi mdi-comment-multiple-outline text-muted"></i>
-                                                        <b><?php echo e(count($taskDetail->comments)); ?></b> <?php echo e(__('Comments')); ?>
-
+                                                        <b>{{count($taskDetail->comments)}}</b> {{ __('Comments')}}
                                                     </span>
                                                 </p>
 
-                                                <small class="float-right text-muted mt-2"><?php echo e(date('d M Y',strtotime($taskDetail->created_at))); ?></small>
-                                                <?php if($currantWorkspace->permission == 'Owner'): ?>
-                                                    <figure class="avatar mr-2 avatar-sm animated" data-toggle="tooltip" data-placement="top" title="" data-original-title="<?php echo e($taskDetail->user->name); ?>">
-                                                        <img <?php if($taskDetail->user->avatar): ?> src="<?php echo e(asset('/storage/avatars/'.$taskDetail->user->avatar)); ?>" <?php else: ?> avatar="<?php echo e($taskDetail->user->name); ?>"<?php endif; ?> class="rounded-circle">
+                                                <small class="float-right text-muted mt-2">{{date('d M Y',strtotime($taskDetail->created_at))}}</small>
+                                                @if($currantWorkspace->permission == 'Owner')
+                                                    <figure class="avatar mr-2 avatar-sm animated" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{$taskDetail->user->name}}">
+                                                        <img @if($taskDetail->user->avatar) src="{{asset('/storage/avatars/'.$taskDetail->user->avatar)}}" @else avatar="{{ $taskDetail->user->name }}"@endif class="rounded-circle">
                                                     </figure>
-                                                    <span class="align-middle"><?php echo e($taskDetail->user->name); ?></span>
-                                                <?php endif; ?>
+                                                    <span class="align-middle">{{$taskDetail->user->name}}</span>
+                                                @endif
                                             </div>
                                         </div>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                @endforeach
                                 </div>
                             </div>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        @endforeach
                     </div> <!-- end .board-->
                 </div> <!-- end col -->
             </div>
-        <?php else: ?>
+        @else
             <div class="container mt-5">
                 <div class="page-error">
                     <div class="page-inner">
                         <h1>404</h1>
                         <div class="page-description">
-                            <?php echo e(__('Page Not Found')); ?>
-
+                            {{ __('Page Not Found') }}
                         </div>
                         <div class="page-search">
-                            <p class="text-muted mt-3"><?php echo e(__('It\'s looking like you may have taken a wrong turn. Don\'t worry... it happens to the best of us. Here\'s a little tip that might help you get back on track.')); ?></p>
+                            <p class="text-muted mt-3">{{ __('It\'s looking like you may have taken a wrong turn. Don\'t worry... it happens to the best of us. Here\'s a little tip that might help you get back on track.')}}</p>
                             <div class="mt-3">
-                                <a class="btn btn-info mt-3" href="<?php echo e(route('home')); ?>"><i class="mdi mdi-reply"></i> <?php echo e(__('Return Home')); ?></a>
+                                <a class="btn btn-info mt-3" href="{{route('home')}}"><i class="mdi mdi-reply"></i> {{ __('Return Home')}}</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        <?php endif; ?>
+        @endif
 
 
     </section>
 
-<?php $__env->stopSection(); ?>
-<?php if($project && $currantWorkspace): ?>
-<?php $__env->startPush('scripts'); ?>
+@endsection
+@if($project && $currantWorkspace)
+@push('scripts')
     <!-- third party js -->
-    <script src="<?php echo e(asset('assets/js/vendor/dragula.min.js')); ?>"></script>
+    <script src="{{ asset('assets/js/vendor/dragula.min.js') }}"></script>
     <script>
         !function (a) {
             "use strict";
@@ -141,16 +133,6 @@
                             return n.classList.contains(r)
                         }
                     }) : dragula(n).on('drop', function (el, target, source, sibling) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-                        // console.log(el);
-                        // console.log(source);
-                        // console.log(target);
-                        // console.log(sibling);
->>>>>>> login
-=======
->>>>>>> project
 
                         var sort = [];
                         $("#"+target.id+" > div").each(function () {
@@ -160,27 +142,18 @@
                         var id = el.id;
                         var old_status = $("#"+source.id).data('status');
                         var new_status = $("#"+target.id).data('status');
-                        var project_id = '<?php echo e($project->id); ?>';
+                        var project_id = '{{$project->id}}';
 
                         $("#"+source.id).parent().find('.count').text($("#"+source.id+" > div").length);
                         $("#"+target.id).parent().find('.count').text($("#"+target.id+" > div").length);
                         $.ajax({
-                            url:'<?php echo e(route('tasks.update.order',[$currantWorkspace->slug,$project->id])); ?>',
+                            url:'{{route('tasks.update.order',[$currantWorkspace->slug,$project->id])}}',
                             type:'PUT',
                             data:{id:id,sort:sort,new_status:new_status,old_status:old_status,project_id:project_id,"_token":$('meta[name="csrf-token"]').attr('content')},
                             success: function(data){
                                 // console.log(data);
                             }
                         });
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-                        // console.log(id);
-                        // console.log(status);
-                        // console.log(project_id);
->>>>>>> login
-=======
->>>>>>> project
 
                     });
 
@@ -214,7 +187,7 @@
                                 "                    </div>" +
                                 "                </li>";
                         }else{
-                            var avatar = (data.user.avatar)?"src='<?php echo e(asset('/storage/avatars/')); ?>/"+data.user.avatar+"'":"avatar='"+data.user.name+"'";
+                            var avatar = (data.user.avatar)?"src='{{asset('/storage/avatars/')}}/"+data.user.avatar+"'":"avatar='"+data.user.name+"'";
                             var html = "<li class='media'>" +
                                 "                    <img class='mr-3 avatar-sm rounded-circle img-thumbnail' width='60' "+avatar+" alt='"+data.user.name+"'>" +
                                 "                    <div class='media-body'>" +
@@ -235,15 +208,15 @@
                         $("#comments").prepend(html);
                         LetterAvatar.transform();
                         $("#form-comment textarea[name='comment']").val('');
-                        toastr('Success','<?php echo e(__("Comment Added Successfully!")); ?>','success');
+                        toastr('Success','{{ __("Comment Added Successfully!")}}','success');
                     },
                     error:function (data) {
-                        toastr('Error', '<?php echo e(__("Some Thing Is Wrong!")); ?>', 'error');
+                        toastr('Error', '{{ __("Some Thing Is Wrong!")}}', 'error');
                     }
                 });
             }
             else{
-                toastr('Error','<?php echo e(__("Please write comment!")); ?>','error');
+                toastr('Error','{{ __("Please write comment!")}}','error');
             }
         });
         $(document).on("click",".delete-comment",function(){
@@ -255,7 +228,7 @@
                     data: {_token: $('meta[name="csrf-token"]').attr('content')},
                     dataType: 'JSON',
                     success: function (data) {
-                        toastr('Success', '<?php echo e(__("Comment Deleted Successfully!")); ?>', 'success');
+                        toastr('Success', '{{ __("Comment Deleted Successfully!")}}', 'success');
                         btn.closest('.media').remove();
                     },
                     error: function (data) {
@@ -263,7 +236,7 @@
                         if (data.message) {
                             toastr('Error', data.message, 'error');
                         } else {
-                            toastr('Error', '<?php echo e(__("Some Thing Is Wrong!")); ?>', 'error');
+                            toastr('Error', '{{ __("Some Thing Is Wrong!")}}', 'error');
                         }
                     }
                 });
@@ -282,7 +255,7 @@
                 success: function(data)
                 {
                     console.log(data);
-                    toastr('Success','<?php echo e(__("Sub Task Added Successfully!")); ?>','success');
+                    toastr('Success','{{ __("Sub Task Added Successfully!")}}','success');
 
                     var html = '<li class="list-group-item pt-2 pb-0">' +
                         '                                <label class="custom-switch pl-0">' +
@@ -309,7 +282,7 @@
                         $('#file-error').text(data.errors.file[0]).show();
                     }
                     else{
-                        toastr('Error', '<?php echo e(__("Some Thing Is Wrong!")); ?>', 'error');
+                        toastr('Error', '{{ __("Some Thing Is Wrong!")}}', 'error');
                     }
                 }
             });
@@ -322,7 +295,7 @@
                 dataType:'JSON',
                 success: function(data)
                 {
-                    toastr('Success','<?php echo e(__("Subtask Updated Successfully!")); ?>','success');
+                    toastr('Success','{{ __("Subtask Updated Successfully!")}}','success');
                     // console.log(data);
                 },
                 error: function(data)
@@ -332,7 +305,7 @@
                         toastr('Error', data.message, 'error');
                     }
                     else{
-                        toastr('Error', '<?php echo e(__("Some Thing Is Wrong!")); ?>', 'error');
+                        toastr('Error', '{{ __("Some Thing Is Wrong!")}}', 'error');
                     }
                 }
             });
@@ -346,7 +319,7 @@
                     data: {_token: $('meta[name="csrf-token"]').attr('content')},
                     dataType: 'JSON',
                     success: function (data) {
-                        toastr('Success', '<?php echo e(__("Subtask Deleted Successfully!")); ?>', 'success');
+                        toastr('Success', '{{ __("Subtask Deleted Successfully!")}}', 'success');
                         btn.closest('.list-group-item').remove();
                     },
                     error: function (data) {
@@ -354,7 +327,7 @@
                         if (data.message) {
                             toastr('Error', data.message, 'error');
                         } else {
-                            toastr('Error', '<?php echo e(__("Some Thing Is Wrong!")); ?>', 'error');
+                            toastr('Error', '{{ __("Some Thing Is Wrong!")}}', 'error');
                         }
                     }
                 });
@@ -374,7 +347,7 @@
                 processData: false,
                 success: function(data)
                 {
-                   toastr('Success','<?php echo e(__("Comment Added Successfully!")); ?>','success');
+                   toastr('Success','{{ __("Comment Added Successfully!")}}','success');
 
                    var delLink = '';
 
@@ -401,7 +374,7 @@
                         "                                </div>" +
                         "                                <div class='col-auto'>" +
                         "                                    <!-- Button -->" +
-                        "                                    <a download href='<?php echo e(asset('/storage/tasks/')); ?>/"+data.file+"' class='btn btn-link text-muted'>" +
+                        "                                    <a download href='{{asset('/storage/tasks/')}}/"+data.file+"' class='btn btn-link text-muted'>" +
                         "                                        <i class='dripicons-download'></i>" +
                         "                                    </a>" +
                         delLink +
@@ -419,7 +392,7 @@
                         $('#file-error').text(data.errors.file[0]).show();
                     }
                     else{
-                       toastr('Error', '<?php echo e(__("Some Thing Is Wrong!")); ?>', 'error');
+                       toastr('Error', '{{ __("Some Thing Is Wrong!")}}', 'error');
                     }
                 }
             });
@@ -433,7 +406,7 @@
                     data: {_token: $('meta[name="csrf-token"]').attr('content')},
                     dataType: 'JSON',
                     success: function (data) {
-                        toastr('Success', '<?php echo e(__("File Deleted Successfully!")); ?>', 'success');
+                        toastr('Success', '{{ __("File Deleted Successfully!")}}', 'success');
                         btn.closest('.border').remove();
                     },
                     error: function (data) {
@@ -441,14 +414,12 @@
                         if (data.message) {
                             toastr('Error', data.message, 'error');
                         } else {
-                            toastr('Error', '<?php echo e(__("Some Thing Is Wrong!")); ?>', 'error');
+                            toastr('Error', '{{ __("Some Thing Is Wrong!")}}', 'error');
                         }
                     }
                 });
             }
         });
     </script>
-<?php $__env->stopPush(); ?>
-<?php endif; ?>
-
-<?php echo $__env->make('layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\CDWeb2\Project_CDWeb1_NhomE - Copy\resources\views/projects/taskboard.blade.php ENDPATH**/ ?>
+@endpush
+@endif

@@ -17,6 +17,9 @@
     <div class="d-sm-none d-lg-inline-block">Hi, {{ Auth::user()->name }}</div></a>
     <div class="dropdown-menu dropdown-menu-right">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> project
       @foreach(Auth::user()->workspace as $workspace)
 
           <a href="@if($currantWorkspace->id == $workspace->id)#@else{{ route('change_workspace',$workspace->id) }}@endif" title="{{ $workspace->name }}" class="dropdown-item notify-item">
@@ -65,6 +68,7 @@
       @endif
 
         <div class="dropdown-divider"></div>
+<<<<<<< HEAD
 
       <a href="{{ route('users.my.account') }}" class="dropdown-item has-icon">
         <i class="mdi mdi-account-circle mr-1"></i> {{ __('My Account')}}
@@ -72,6 +76,9 @@
       <div class="dropdown-divider"></div>
 =======
 >>>>>>> login
+=======
+      <div class="dropdown-divider"></div>
+>>>>>>> project
       <a href="{{ route('logout') }}" class="dropdown-item has-icon text-danger" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
         <i class="mdi mdi-logout mr-1"></i> {{ __('Logout') }}
       </a>

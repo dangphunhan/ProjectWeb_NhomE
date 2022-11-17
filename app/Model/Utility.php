@@ -1,7 +1,11 @@
 <?php
 namespace App;
 
+<<<<<<< HEAD
 use Auth;
+=======
+use Illuminate\Support\Facades\Auth;
+>>>>>>> project
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 
@@ -44,6 +48,7 @@ class Utility
                 return $rs;
             }
         }
+<<<<<<< HEAD
         if($objUser && !empty($slug)){
             $rs = Workspace::select(['workspaces.id','workspaces.lang','workspaces.name','workspaces.slug','user_workspaces.permission','workspaces.created_by'])->join('user_workspaces', 'workspaces.id', '=', 'user_workspaces.workspace_id')->where('slug', '=', $slug)->where('user_id','=',$objUser->id)->first();
             if($rs){
@@ -51,6 +56,8 @@ class Utility
                 return $rs;
             }
         }
+=======
+>>>>>>> project
         if($objUser) {
             $rs = Workspace::select(['workspaces.id', 'workspaces.lang', 'workspaces.name', 'workspaces.slug', 'user_workspaces.permission', 'workspaces.created_by'])->join('user_workspaces', 'workspaces.id', '=', 'user_workspaces.workspace_id')->where('user_id', '=', $objUser->id)->orderBy('workspaces.id', 'desc')->limit(1)->first();
             if ($rs) {
@@ -66,6 +73,7 @@ class Utility
             }
         }
     }
+<<<<<<< HEAD
     public static function setLang($Workspace){
 
         $dir    = base_path().'/resources/lang/'.$Workspace->id."/";
@@ -111,4 +119,6 @@ class Utility
         }
     }
 
+=======
+>>>>>>> project
 }

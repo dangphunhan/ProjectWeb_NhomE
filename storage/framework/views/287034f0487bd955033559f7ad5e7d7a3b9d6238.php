@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 
     <title>Dominant</title>
-    <link rel="shortcut icon" href="{{asset(Storage::url('logo/th.jpg'))}}">
+    <link rel="shortcut icon" href="<?php echo e(asset(Storage::url('logo/th.jpg'))); ?>">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
 
     <!-- App css -->
-    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/components.css') }}" rel="stylesheet">
+    <link href="<?php echo e(asset('assets/css/style.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('assets/css/components.css')); ?>" rel="stylesheet">
 </head>
 <body>
 
@@ -25,30 +25,23 @@
             <div class="row">
                 <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
                     <div class="login-brand">
-                        <img src="{{asset(Storage::url('logo/th.jpg'))}}" alt="logo" width="100">
+                        <img src="<?php echo e(asset(Storage::url('logo/th.jpg'))); ?>" alt="logo" width="100">
                     </div>
-                    @if(session()->has('info'))
+                    <?php if(session()->has('info')): ?>
                         <div class="alert alert-primary">
-                            {{ session()->get('info') }}
+                            <?php echo e(session()->get('info')); ?>
+
                         </div>
-                    @endif
-                    @if(session()->has('status'))
+                    <?php endif; ?>
+                    <?php if(session()->has('status')): ?>
                         <div class="alert alert-info">
-                            {{ session()->get('status') }}
+                            <?php echo e(session()->get('status')); ?>
+
                         </div>
-                    @endif
-                    @yield('content')
+                    <?php endif; ?>
+                    <?php echo $__env->yieldContent('content'); ?>
                     <div class="simple-footer">
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        Copyright &copy; {{ date('Y') }}<div class="bullet"></div> Thu Duc College of Technology <div class="bullet"></div> Design By NhomE                    </div>
-=======
-                        Copyright &copy; {{ date('Y') }}<div class="bullet"></div> Thu Duc College of Technology <div class="bullet"></div> Design By NhomE
-                    </div>
->>>>>>> login
-=======
-                        Copyright &copy; {{ date('Y') }}<div class="bullet"></div> Thu Duc College of Technology <div class="bullet"></div> Design By NhomE                    </div>
->>>>>>> project
+                        Copyright &copy; <?php echo e(date('Y')); ?><div class="bullet"></div> Thu Duc College of Technology <div class="bullet"></div> Design By NhomE                    </div>
                 </div>
             </div>
         </div>
@@ -63,15 +56,16 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-<script src="{{ asset('assets/js/stisla.js') }}"></script>
+<script src="<?php echo e(asset('assets/js/stisla.js')); ?>"></script>
 
 <!-- JS Libraies -->
 
 <!-- Template JS File -->
-<script src="{{ asset('assets/js/scrollreveal.min.js') }}"></script>
-<script src="{{ asset('assets/js/scripts.js') }}"></script>
-<script src="{{ asset('assets/js/custom.js') }}"></script>
+<script src="<?php echo e(asset('assets/js/scrollreveal.min.js')); ?>"></script>
+<script src="<?php echo e(asset('assets/js/scripts.js')); ?>"></script>
+<script src="<?php echo e(asset('assets/js/custom.js')); ?>"></script>
 
 <!-- Page Specific JS File -->
 </body>
 </html>
+<?php /**PATH C:\wamp64\www\Project_CDWeb1_NhomE - Copy\resources\views/layouts/auth.blade.php ENDPATH**/ ?>

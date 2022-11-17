@@ -47,6 +47,7 @@
                 </a>
             </li>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
             <li class="nav-item">
                 <a href="#profile-b1" data-toggle="tab" aria-expanded="true" class="nav-link">
@@ -55,6 +56,8 @@
                 </a>
             </li>
 >>>>>>> login
+=======
+>>>>>>> project
             <?php if(empty($clientID)): ?>
             <li class="nav-item">
                 <a href="#sub-task" data-toggle="tab" aria-expanded="true" class="nav-link">

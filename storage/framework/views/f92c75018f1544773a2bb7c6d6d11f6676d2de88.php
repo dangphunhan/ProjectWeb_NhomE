@@ -47,6 +47,7 @@ if (isset($messageCache)) { $message = $messageCache; }
 endif; ?>
                                                     </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
                                                     <div class="">
                                                         <button type="submit" class="btn btn-primary">
                                                             <i class="mdi mdi-update mr-1"></i> <?php echo e(__('Update')); ?> </button>
@@ -71,10 +72,16 @@ endif; ?>
                                                             <small><?php echo e(__('Please upload a valid image file. Size of image should not be more than 2MB.')); ?></small>
                                                         </span>
 >>>>>>> login
+=======
+                                                    <div class="">
+                                                        <button type="submit" class="btn btn-primary">
+                                                            <i class="mdi mdi-update mr-1"></i> <?php echo e(__('Update')); ?> </button>
+>>>>>>> project
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6 text-center pt-5 pl-5 pr-5">
                                                     <img <?php if($user->avatar): ?> src="<?php echo e(asset('/storage/avatars/'.$user->avatar)); ?>" <?php else: ?> avatar="<?php echo e($user->name); ?>" <?php endif; ?> id="myAvatar" alt="user-image" class="rounded-circle img-thumbnail w-100">
+<<<<<<< HEAD
 <<<<<<< HEAD
                                                 </div>
                                             </div>
@@ -105,6 +112,11 @@ endif; ?>
                                             </form>
                                         <?php endif; ?>
 >>>>>>> login
+=======
+                                                </div>
+                                            </div>
+                                        </form>
+>>>>>>> project
                                     </div>
                                     <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                                         <form method="post" action="<?php echo e(route('update.password')); ?>">

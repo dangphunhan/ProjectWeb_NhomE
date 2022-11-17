@@ -1,4 +1,5 @@
 <?php $__env->startSection('content'); ?>
+<<<<<<< HEAD
     <section class="section">
 <<<<<<< HEAD
         <?php if($currantWorkspace): ?>
@@ -7,6 +8,12 @@
     <?php if($currantWorkspace): ?>
             <h2 class="section-title"><?php echo e(__('Projects')); ?></h2>
 >>>>>>> login
+=======
+
+    <section class="section">
+        <?php if($currantWorkspace): ?>
+            <h2 class="section-title"><?php echo e(__('Dashboard')); ?></h2>
+>>>>>>> project
 
             <div class="row">
                 <div class="col-12">
@@ -14,10 +21,14 @@
                         <div class="card-body p-0">
                             <div class="row no-gutters">
 <<<<<<< HEAD
+<<<<<<< HEAD
                                 <div class="col-sm-6 col-xl-4 animated">
 =======
                                 <div class="col-sm-6 col-xl-3 animated">
 >>>>>>> login
+=======
+                                <div class="col-sm-6 col-xl-4 animated">
+>>>>>>> project
                                     <div class="card shadow-none m-0">
                                         <div class="card-body text-center">
                                             <i class="dripicons-briefcase text-muted" style="font-size: 24px;"></i>
@@ -28,10 +39,14 @@
                                 </div>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
                                 <div class="col-sm-6 col-xl-4 animated">
 =======
                                 <div class="col-sm-6 col-xl-3 animated">
 >>>>>>> login
+=======
+                                <div class="col-sm-6 col-xl-4 animated">
+>>>>>>> project
                                     <div class="card shadow-none m-0 border-left">
                                         <div class="card-body text-center">
                                             <i class="dripicons-checklist text-muted" style="font-size: 24px;"></i>
@@ -42,10 +57,14 @@
                                 </div>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
                                 <div class="col-sm-6 col-xl-4 animated">
 =======
                                 <div class="col-sm-6 col-xl-3 animated">
 >>>>>>> login
+=======
+                                <div class="col-sm-6 col-xl-4 animated">
+>>>>>>> project
                                     <div class="card shadow-none m-0 border-left">
                                         <div class="card-body text-center">
                                             <i class="dripicons-user-group text-muted" style="font-size: 24px;"></i>
@@ -55,6 +74,7 @@
                                     </div>
                                 </div>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
                                
 =======
@@ -68,6 +88,9 @@
                                     </div>
                                 </div>
 >>>>>>> login
+=======
+                               
+>>>>>>> project
 
                             </div> <!-- end row -->
                         </div>
@@ -81,6 +104,9 @@
                     <div class="card animated">
                         <div class="card-header">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> project
                             <h4><?php echo e(__('Workspaces')); ?></h4>
                         </div>
                         <div class="card-body">
@@ -136,6 +162,7 @@
             </div>
             <div class="row">
                 <div class="col-xl-12">
+<<<<<<< HEAD
 =======
                             <h4><?php echo e(__('Tasks Overview')); ?></h4>
                         </div>
@@ -187,6 +214,8 @@
 
                 <div class="col-xl-8">
 >>>>>>> login
+=======
+>>>>>>> project
                     <div class="card animated">
                         <div class="card-header">
                             <h4><?php echo e(__('Tasks')); ?></h4>
@@ -199,6 +228,9 @@
                                 <table class="table table-centered table-hover mb-0 animated">
                                     <tbody>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> project
                                         <?php $__currentLoopData = $tasks; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $task): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                             <tr>
                                                 <td>
@@ -252,6 +284,7 @@
     </section>
 
 <?php $__env->stopSection(); ?>
+<<<<<<< HEAD
 =======
                                     <?php $__currentLoopData = $tasks; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $task): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <tr>
@@ -557,5 +590,7 @@ var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'A
 <?php $__env->stopPush(); ?>
 <?php endif; ?>
 >>>>>>> login
+=======
+>>>>>>> project
 
 <?php echo $__env->make('layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\CDWeb2\Project_CDWeb1_NhomE - Copy\resources\views/home.blade.php ENDPATH**/ ?>

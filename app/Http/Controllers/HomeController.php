@@ -36,9 +36,12 @@ class HomeController extends Controller
             $userObj = Auth::user();
             $totalProject = UserProject::join("projects","projects.id","=","user_projects.project_id")->where("user_id","=",$userObj->id)->where('projects.workspace','=',$currantWorkspace->id)->count();
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
             $totalClients = ClientWorkspace::where("workspace_id","=",$currantWorkspace->id)->count();
 >>>>>>> login
+=======
+>>>>>>> project
             if($currantWorkspace->permission == 'Owner') {
                 $totalTask = UserProject::join("tasks", "tasks.project_id", "=", "user_projects.project_id")->join("projects", "projects.id", "=", "user_projects.project_id")->where("user_id", "=", $userObj->id)->where('projects.workspace', '=', $currantWorkspace->id)->count();
                 $completeTask = UserProject::join("tasks", "tasks.project_id", "=", "user_projects.project_id")->join("projects", "projects.id", "=", "user_projects.project_id")->where("user_id", "=", $userObj->id)->where('projects.workspace', '=', $currantWorkspace->id)->where('tasks.status', '=', 'done')->count();
@@ -54,6 +57,9 @@ class HomeController extends Controller
             $totalMembers = UserWorkspace::where('workspace_id','=',$currantWorkspace->id)->count();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> project
            
 
            
@@ -62,6 +68,7 @@ class HomeController extends Controller
             $endDate = date('Y-m-d H:i:s',strtotime($startDate."+1 day"));
             
             return view('home', compact('currantWorkspace','totalProject','totalTask','totalMembers','completeTask','tasks'));
+<<<<<<< HEAD
 =======
             $projectProcess = UserProject::join("projects","projects.id","=","user_projects.project_id")->where("user_id","=",$userObj->id)->where('projects.workspace','=',$currantWorkspace->id)->groupBy('projects.status')->selectRaw('count(projects.id) as count, projects.status')->pluck('count','projects.status');
             $arrProcessLable= [];
@@ -84,6 +91,8 @@ class HomeController extends Controller
 
             return view('home', compact('currantWorkspace','totalProject','totalClients','totalTask','totalMembers','arrProcessLable','arrProcessPer','arrProcessClass','completeTask','tasks','todos','chartData'));
 >>>>>>> login
+=======
+>>>>>>> project
         }
         else{
             return view('home', compact('currantWorkspace'));

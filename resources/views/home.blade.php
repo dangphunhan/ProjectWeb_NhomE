@@ -2,6 +2,7 @@
 
 @section('content')
 <<<<<<< HEAD
+<<<<<<< HEAD
     <section class="section">
         @if ($currantWorkspace)
             <h2 class="section-title">{{ __('Dashboard') }}</h2>
@@ -11,6 +12,11 @@
     @if($currantWorkspace)
             <h2 class="section-title">{{ __('Projects') }}</h2>
 >>>>>>> login
+=======
+    <section class="section">
+        @if ($currantWorkspace)
+            <h2 class="section-title">{{ __('Dashboard') }}</h2>
+>>>>>>> project
 
             <div class="row">
                 <div class="col-12">
@@ -18,10 +24,14 @@
                         <div class="card-body p-0">
                             <div class="row no-gutters">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> project
                                 <div class="col-sm-6 col-xl-4 animated">
                                     <div class="card shadow-none m-0">
                                         <div class="card-body text-center">
                                             <i class="dripicons-briefcase text-muted" style="font-size: 24px;"></i>
+<<<<<<< HEAD
 <<<<<<< HEAD
                                             <h3><span>{{ $totalProject }}</span></h3>
 =======
@@ -34,16 +44,23 @@
                                             <h3><span></span></h3>
 >>>>>>> login
 >>>>>>> origin/master
+=======
+                                            <h3><span>{{ $totalProject }}</span></h3>
+>>>>>>> project
                                             <p class="text-muted font-15 mb-0">{{ __('Total Projects') }}</p>
                                         </div>
                                     </div>
                                 </div>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> project
                                 <div class="col-sm-6 col-xl-4 animated">
                                     <div class="card shadow-none m-0 border-left">
                                         <div class="card-body text-center">
                                             <i class="dripicons-checklist text-muted" style="font-size: 24px;"></i>
+<<<<<<< HEAD
 <<<<<<< HEAD
                                             <h3><span>{{ $totalTask }}</span></h3>
 =======
@@ -56,16 +73,23 @@
                                             <h3><span></span></h3>
 >>>>>>> login
 >>>>>>> origin/master
+=======
+                                            <h3><span>{{ $totalTask }}</span></h3>
+>>>>>>> project
                                             <p class="text-muted font-15 mb-0">{{ __('Total Tasks') }}</p>
                                         </div>
                                     </div>
                                 </div>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> project
                                 <div class="col-sm-6 col-xl-4 animated">
                                     <div class="card shadow-none m-0 border-left">
                                         <div class="card-body text-center">
                                             <i class="dripicons-user-group text-muted" style="font-size: 24px;"></i>
+<<<<<<< HEAD
 <<<<<<< HEAD
                                             <h3><span>{{ $totalMembers }}</span></h3>
 =======
@@ -78,11 +102,15 @@
                                             <h3><span></span></h3>
 >>>>>>> login
 >>>>>>> origin/master
+=======
+                                            <h3><span>{{ $totalMembers }}</span></h3>
+>>>>>>> project
                                             <p class="text-muted font-15 mb-0">{{ __('Members') }}</p>
                                         </div>
                                     </div>
                                 </div>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
                                
 =======
@@ -96,6 +124,9 @@
                                     </div>
                                 </div>
 >>>>>>> login
+=======
+                               
+>>>>>>> project
 
                             </div> <!-- end row -->
                         </div>
@@ -109,6 +140,9 @@
                     <div class="card animated">
                         <div class="card-header">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> project
                             <h4>{{ __('Workspaces') }}</h4>
                         </div>
                         <div class="card-body">
@@ -223,6 +257,7 @@
                 </div>
             </div>
         @endif
+<<<<<<< HEAD
 =======
                             <h4>{{ __('Tasks Overview') }}</h4>
                         </div>
@@ -272,6 +307,8 @@
             <!-- end row-->
     @endif
 >>>>>>> login
+=======
+>>>>>>> project
     </section>
 
 @endsection

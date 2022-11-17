@@ -20,16 +20,23 @@
                   <span> {{ __('Projects') }} </span>
               </a>
 <<<<<<< HEAD
+<<<<<<< HEAD
           </li> 
 =======
           </li>
 >>>>>>> login
           <li class="{{ (Request::route()->getName() == 'users.index') ? ' active' : '' }}">
               <a href="{{ route('users.index',$currantWorkspace->slug) }}">
+=======
+          </li> 
+          <li class="{{ (Request::route()->getName() == 'users.index') ? ' active' : '' }}">
+              <a href="#">
+>>>>>>> project
                   <i class="dripicons-network-3"></i>
                   <span> {{ __('Users') }} </span>
               </a>
           </li>
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
           @if($currantWorkspace->creater->id == Auth::user()->id)
@@ -49,6 +56,10 @@
 >>>>>>> login
           <li class="{{ (Request::route()->getName() == 'notes.index') ? ' active' : '' }}">
               <a href="{{ route('notes.index',$currantWorkspace->slug) }}">
+=======
+          <li class="{{ (Request::route()->getName() == 'notes.index') ? ' active' : '' }}">
+              <a href="#">
+>>>>>>> project
                   <i class="dripicons-clipboard"></i>
                   <span> {{ __('Notes') }} </span>
               </a>
