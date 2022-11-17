@@ -23,6 +23,7 @@ if (isset($messageCache)) { $message = $messageCache; }
 endif; ?>
                 </div>
                 <div class="form-group">
+                    <a href="<?php echo e(route('password.request')); ?>" class="text-muted float-right"><small><?php echo e(__('Forgot your password?')); ?></small></a>
                     <label for="password"><?php echo e(__('Password')); ?></label>
                     <input class="form-control <?php if ($errors->has('password')) :
 if (isset($message)) { $messageCache = $message; }
@@ -41,7 +42,8 @@ endif; ?>
                 </div>
                 <div class="form-group mb-3">
                     <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="checkbox-signin" name="remember" <?php echo e(old('remember') ? 'checked' : ''); ?>>                       
+                        <input type="checkbox" class="custom-control-input" id="checkbox-signin" name="remember" <?php echo e(old('remember') ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="checkbox-signin"><?php echo e(__('Remember Me')); ?></label>
                     </div>
                 </div>
                 <div class="form-group mb-0 text-center">

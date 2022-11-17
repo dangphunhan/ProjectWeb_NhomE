@@ -5,7 +5,11 @@
     </a>
   </div>
   <div class="sidebar-brand sidebar-brand-sm">
+<<<<<<< HEAD
     <a href="<?php echo e(route('home')); ?>"><img src="<?php echo e(asset(Storage::url('logo/th.jpg'))); ?>" alt="<?php echo e(env('APP_NAME')); ?>" height="25"></a>
+=======
+    <a href="<?php echo e(route('home')); ?>"><img src="<?php echo e(asset(Storage::url('logo/logo.png'))); ?>" alt="<?php echo e(env('APP_NAME')); ?>" height="25"></a>
+>>>>>>> login
   </div>
   <ul class="sidebar-menu">
       <li class="<?php echo e((Request::route()->getName() == 'home' || Request::route()->getName() == NULL) ? ' active' : ''); ?>">
@@ -19,13 +23,34 @@
                   <i class="dripicons-briefcase"></i>
                   <span> <?php echo e(__('Projects')); ?> </span>
               </a>
+<<<<<<< HEAD
           </li> 
+=======
+          </li>
+>>>>>>> login
           <li class="<?php echo e((Request::route()->getName() == 'users.index') ? ' active' : ''); ?>">
               <a href="<?php echo e(route('users.index',$currantWorkspace->slug)); ?>">
                   <i class="dripicons-network-3"></i>
                   <span> <?php echo e(__('Users')); ?> </span>
               </a>
           </li>
+<<<<<<< HEAD
+=======
+          <?php if($currantWorkspace->creater->id == Auth::user()->id): ?>
+              <li class="<?php echo e((Request::route()->getName() == 'clients.index') ? ' active' : ''); ?>">
+                  <a href="<?php echo e(route('clients.index',$currantWorkspace->slug)); ?>">
+                      <i class="dripicons-user"></i>
+                      <span> <?php echo e(__('Clients')); ?> </span>
+                  </a>
+              </li>
+          <?php endif; ?>
+          <li class="<?php echo e((Request::route()->getName() == 'calender.index') ? ' active' : ''); ?>">
+              <a href="<?php echo e(route('calender.index',$currantWorkspace->slug)); ?>">
+                  <i class="dripicons-calendar"></i>
+                  <span> <?php echo e(__('Calendar')); ?> </span>
+              </a>
+          </li>
+>>>>>>> login
           <li class="<?php echo e((Request::route()->getName() == 'notes.index') ? ' active' : ''); ?>">
               <a href="<?php echo e(route('notes.index',$currantWorkspace->slug)); ?>">
                   <i class="dripicons-clipboard"></i>

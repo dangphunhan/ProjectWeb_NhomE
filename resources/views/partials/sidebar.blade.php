@@ -19,13 +19,34 @@
                   <i class="dripicons-briefcase"></i>
                   <span> {{ __('Projects') }} </span>
               </a>
+<<<<<<< HEAD
           </li> 
+=======
+          </li>
+>>>>>>> login
           <li class="{{ (Request::route()->getName() == 'users.index') ? ' active' : '' }}">
               <a href="#">
                   <i class="dripicons-network-3"></i>
                   <span> {{ __('Users') }} </span>
               </a>
           </li>
+<<<<<<< HEAD
+=======
+          @if($currantWorkspace->creater->id == Auth::user()->id)
+              <li class="{{ (Request::route()->getName() == 'clients.index') ? ' active' : '' }}">
+                  <a href="#">
+                      <i class="dripicons-user"></i>
+                      <span> {{ __('Clients') }} </span>
+                  </a>
+              </li>
+          @endif
+          <li class="{{ (Request::route()->getName() == 'calender.index') ? ' active' : '' }}">
+              <a href="#">
+                  <i class="dripicons-calendar"></i>
+                  <span> {{ __('Calendar') }} </span>
+              </a>
+          </li>
+>>>>>>> login
           <li class="{{ (Request::route()->getName() == 'notes.index') ? ' active' : '' }}">
               <a href="#">
                   <i class="dripicons-clipboard"></i>

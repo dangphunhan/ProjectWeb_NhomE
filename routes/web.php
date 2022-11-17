@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
+<<<<<<< HEAD
 
 //Home
 Route::get('/','HomeController@index');
@@ -28,4 +29,9 @@ Route::post('/workspace',['as' => 'add_workspace','uses' =>'WorkspaceController@
 Route::delete('/workspace/{id}',['as' => 'delete_workspace','uses' =>'WorkspaceController@destroy']);
 Route::delete('/workspace/leave/{id}',['as' => 'leave_workspace','uses' =>'WorkspaceController@leave']);
 Route::get('/workspace/{id}',['as' => 'change_workspace','uses' =>'WorkspaceController@changeCurrantWorkspace']);
+=======
+//Home
+Route::get('/','HomeController@index')->middleware(['auth','XSS']);
+Route::get('/{slug?}', ['as' => 'home','uses' => 'HomeController@index'])->middleware(['auth','XSS']);
+>>>>>>> login
 

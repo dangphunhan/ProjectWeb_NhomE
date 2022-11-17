@@ -33,7 +33,11 @@
                                             <?php echo method_field('DELETE'); ?>
                                         </form>
                                         <a href="#" class="dropdown-item" class="dropdown-item" data-ajax-popup="true" data-size="lg" data-title="<?php echo e(__('Invite Users')); ?>" data-url="<?php echo e(route('projects.invite.popup',[$currantWorkspace->slug,$project->id])); ?>"><i class="mdi mdi-email-outline mr-1"></i><?php echo e(__('Invite')); ?></a>
+<<<<<<< HEAD
                                         
+=======
+                                        <a href="#" class="dropdown-item" data-ajax-popup="true" data-size="lg" data-title="<?php echo e(__('Share to Clients')); ?>" data-url="<?php echo e(route('projects.share.popup',[$currantWorkspace->slug,$project->id])); ?>"><i class="mdi mdi-email-outline mr-1"></i><?php echo e(__('Share')); ?></a>
+>>>>>>> login
                                     <?php else: ?>
                                         <a href="#" onclick="(confirm('Are you sure ?')?document.getElementById('leave-form-<?php echo e($project->id); ?>').submit(): '');" class="dropdown-item"><i class="mdi mdi-exit-to-app mr-1"></i><?php echo e(__('Leave')); ?></a>
                                         <form id="leave-form-<?php echo e($project->id); ?>" action="<?php echo e(route('projects.leave',[$currantWorkspace->slug,$project->id])); ?>" method="POST" style="display: none;">
@@ -235,9 +239,26 @@
             <div class="col-md-4 animated">
                 <div class="card card-primary">
                     <div class="card-header">
+<<<<<<< HEAD
                         <h4><?php echo e(__('Activity')); ?></h4>
                     </div>
                     <div class="card-body"  style="height: 900px;overflow-y: scroll">
+=======
+                        <h4><?php echo e(__('Progress')); ?></h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="mt-3 chartjs-chart" style="height: 320px;">
+                            <canvas id="line-chart-example"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <!-- end card-->
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h4><?php echo e(__('Activity')); ?></h4>
+                    </div>
+                    <div class="card-body"  style="height: 500px;overflow-y: scroll">
+>>>>>>> login
                         <div class="activities">
                             <?php $__currentLoopData = $project->activities; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $activity): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <div class="activity">
@@ -257,6 +278,13 @@
                                         <div class="activity-icon bg-primary text-white shadow-primary">
                                             <i class="mdi mdi-plus"></i>
                                         </div>
+<<<<<<< HEAD
+=======
+                                    <?php elseif($activity->log_type == 'Share with Client'): ?>
+                                        <div class="activity-icon bg-primary text-white shadow-primary">
+                                            <i class="mdi mdi-plus"></i>
+                                        </div>
+>>>>>>> login
                                     <?php elseif($activity->log_type == 'Upload File'): ?>
                                         <div class="activity-icon bg-primary text-white shadow-primary">
                                             <i class="mdi mdi-file"></i>
@@ -309,6 +337,216 @@
     <!-- third party js -->
     <script src="<?php echo e(asset('assets/js/vendor/Chart.bundle.min.js')); ?>"></script>
     <script>
+<<<<<<< HEAD
+=======
+
+window.chartColors = {
+	red: 'rgb(255, 99, 132)',
+	orange: 'rgb(255, 159, 64)',
+	yellow: 'rgb(255, 205, 86)',
+	green: 'rgb(75, 192, 192)',
+	blue: 'rgb(54, 162, 235)',
+	purple: 'rgb(153, 102, 255)',
+	grey: 'rgb(201, 203, 207)'
+};
+
+    (function(global) {
+	var MONTHS = [
+		'January',
+		'February',
+		'March',
+		'April',
+		'May',
+		'June',
+		'July',
+		'August',
+		'September',
+		'October',
+		'November',
+		'December'
+	];
+
+	var COLORS = [
+		'#4dc9f6',
+		'#f67019',
+		'#f53794',
+		'#537bc4',
+		'#acc236',
+		'#166a8f',
+		'#00a950',
+		'#58595b',
+		'#8549ba'
+	];
+
+	var Samples = global.Samples || (global.Samples = {});
+	var Color = global.Color;
+
+	Samples.utils = {
+		// Adapted from http://indiegamr.com/generate-repeatable-random-numbers-in-js/
+		srand: function(seed) {
+			this._seed = seed;
+		},
+
+		rand: function(min, max) {
+			var seed = this._seed;
+			min = min === undefined ? 0 : min;
+			max = max === undefined ? 1 : max;
+			this._seed = (seed * 9301 + 49297) % 233280;
+			return min + (this._seed / 233280) * (max - min);
+		},
+
+		numbers: function(config) {
+			var cfg = config || {};
+			var min = cfg.min || 0;
+			var max = cfg.max || 1;
+			var from = cfg.from || [];
+			var count = cfg.count || 8;
+			var decimals = cfg.decimals || 8;
+			var continuity = cfg.continuity || 1;
+			var dfactor = Math.pow(10, decimals) || 0;
+			var data = [];
+			var i, value;
+
+			for (i = 0; i < count; ++i) {
+				value = (from[i] || 0) + this.rand(min, max);
+				if (this.rand() <= continuity) {
+					data.push(Math.round(dfactor * value) / dfactor);
+				} else {
+					data.push(null);
+				}
+			}
+
+			return data;
+		},
+
+		labels: function(config) {
+			var cfg = config || {};
+			var min = cfg.min || 0;
+			var max = cfg.max || 100;
+			var count = cfg.count || 8;
+			var step = (max - min) / count;
+			var decimals = cfg.decimals || 8;
+			var dfactor = Math.pow(10, decimals) || 0;
+			var prefix = cfg.prefix || '';
+			var values = [];
+			var i;
+
+			for (i = min; i < max; i += step) {
+				values.push(prefix + Math.round(dfactor * i) / dfactor);
+			}
+
+			return values;
+		},
+
+		months: function(config) {
+			var cfg = config || {};
+			var count = cfg.count || 12;
+			var section = cfg.section;
+			var values = [];
+			var i, value;
+
+			for (i = 0; i < count; ++i) {
+				value = MONTHS[Math.ceil(i) % 12];
+				values.push(value.substring(0, section));
+			}
+
+			return values;
+		},
+
+		color: function(index) {
+			return COLORS[index % COLORS.length];
+		},
+
+		transparentize: function(color, opacity) {
+			var alpha = opacity === undefined ? 0.5 : 1 - opacity;
+			return Color(color).alpha(alpha).rgbString();
+		}
+	};
+
+	// DEPRECATED
+	window.randomScalingFactor = function() {
+		return Math.round(Samples.utils.rand(-100, 100));
+	};
+
+	// INITIALIZATION
+
+	Samples.utils.srand(Date.now());
+
+
+
+}(this));
+
+var config = {
+			type: 'line',
+			data: {
+				labels: <?php echo json_encode($chartData['label']); ?>,
+				datasets: [
+				    {
+                                label: "<?php echo e(__('Todo')); ?>",
+                                fill: !0,
+                                backgroundColor: "transparent",
+                                borderColor: "#fa5c7c",
+                                data: <?php echo json_encode($chartData['todo']); ?>
+
+                            },
+                            {
+                                label: "<?php echo e(__('In Progress')); ?>",
+                                fill: !0,
+                                backgroundColor: "transparent",
+                                borderColor: "#727cf5",
+                                data: <?php echo json_encode($chartData['progress']); ?>
+
+                            },
+                            {
+                                label: "<?php echo e(__('Review')); ?>",
+                                fill: !0,
+                                backgroundColor: "transparent",
+                                borderColor: "#0acf97",
+                                borderDash: [5, 5],
+                                data: <?php echo json_encode($chartData['review']); ?>
+
+                            },
+                            {
+                                label: "<?php echo e(__('Done')); ?>",
+                                backgroundColor: "rgba(10, 207, 151, 0.3)",
+                                borderColor: "#0acf97",
+                                data: <?php echo json_encode($chartData['done']); ?>
+
+                            },
+				]
+			},
+			options: {
+			    maintainAspectRatio:false,
+			    scales: {
+                    xAxes: [{reverse: !0, gridLines: {color: "rgba(0,0,0,0.05)"}}],
+                    yAxes: [{
+                        ticks: {stepSize: 10, display: !1},
+                        min: 10,
+                        max: 100,
+                        display: !0,
+                        borderDash: [5, 5],
+                        gridLines: {color: "rgba(0,0,0,0)", fontColor: "#fff"}
+                    }]
+                },
+				responsive: true,
+				title: {
+					display: false,
+				},
+				tooltips: {
+					mode: 'index',
+					intersect: false,
+				},
+				hover: {
+					mode: 'nearest',
+					intersect: true
+				},
+				legend:{
+				    display:false
+				}
+			}
+		};
+
+>>>>>>> login
 window.onload = function() {
 			var ctx = document.getElementById('line-chart-example').getContext('2d');
 			window.myLine = new Chart(ctx, config);
@@ -408,6 +646,10 @@ window.onload = function() {
         // And optionally show the thumbnail of the file:
         myDropzone.emit("thumbnail", mockFile, "<?php echo e(asset('storage/project_files/'.$file->file_path)); ?>");
         myDropzone.emit("complete", mockFile);
+<<<<<<< HEAD
+=======
+
+>>>>>>> login
         dropzoneBtn(mockFile,{download:"<?php echo e(route('projects.file.download',[$currantWorkspace->slug,$project->id,$file->id])); ?>",delete:"<?php echo e(route('projects.file.delete',[$currantWorkspace->slug,$project->id,$file->id])); ?>"});
 
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
