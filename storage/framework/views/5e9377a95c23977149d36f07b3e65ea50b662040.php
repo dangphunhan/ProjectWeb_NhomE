@@ -33,7 +33,6 @@
                                 <div class="mt-0 task-header text-uppercase"><?php echo e(__(ucwords($status))); ?> (<span class="count"><?php echo e(count($task)); ?></span>)</div>
                                 <div id="<?php echo e('task-list-'.str_replace(' ','_',$status)); ?>" data-status="<?php echo e($status); ?>" class="task-list-items">
                                 <?php $__currentLoopData = $task; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $taskDetail): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-
                                         <div class="card mb-0" id="<?php echo e($taskDetail->id); ?>">
                                             <div class="card-body p-3">
                                                 <div class="dropdown float-right">
@@ -135,10 +134,6 @@
                             return n.classList.contains(r)
                         }
                     }) : dragula(n).on('drop', function (el, target, source, sibling) {
-                        // console.log(el);
-                        // console.log(source);
-                        // console.log(target);
-                        // console.log(sibling);
 
                         var sort = [];
                         $("#"+target.id+" > div").each(function () {
@@ -160,9 +155,6 @@
                                 // console.log(data);
                             }
                         });
-                        // console.log(id);
-                        // console.log(status);
-                        // console.log(project_id);
 
                     });
 

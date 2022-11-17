@@ -46,53 +46,16 @@ $message = $errors->first('name'); ?>
 if (isset($messageCache)) { $message = $messageCache; }
 endif; ?>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label for="avatar"><?php echo e(__('Avatar')); ?></label>
-                                                        <input class="form-control <?php if ($errors->has('avatar')) :
-if (isset($message)) { $messageCache = $message; }
-$message = $errors->first('avatar'); ?> is-invalid <?php unset($message);
-if (isset($messageCache)) { $message = $messageCache; }
-endif; ?>" name="avatar" type="file" id="avatar" accept="image/*">
-                                                        <?php if ($errors->has('avatar')) :
-if (isset($message)) { $messageCache = $message; }
-$message = $errors->first('avatar'); ?>
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong><?php echo e($message); ?></strong>
-                                                        </span>
-                                                        <?php unset($message);
-if (isset($messageCache)) { $message = $messageCache; }
-endif; ?>
-                                                        <span>
-                                                            <small><?php echo e(__('Please upload a valid image file. Size of image should not be more than 2MB.')); ?></small>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 text-center pt-5 pl-5 pr-5">
-                                                    <img <?php if($user->avatar): ?> src="<?php echo e(asset('/storage/avatars/'.$user->avatar)); ?>" <?php else: ?> avatar="<?php echo e($user->name); ?>" <?php endif; ?> id="myAvatar" alt="user-image" class="rounded-circle img-thumbnail w-100">
-                                                    <?php if($user->avatar!=''): ?>
-                                                        <button type="button" class="btn btn-danger mt-2" onclick="document.getElementById('delete_avatar').submit();">
-                                                            <i class="mdi mdi-delete mr-1"></i> <?php echo e(__('Delete')); ?>
-
-                                                        </button>
-                                                    <?php endif; ?>
-                                                </div>
-                                            </div>
-
-                                            <div class="row mt-4">
-                                                <div class="col-sm-6">
                                                     <div class="">
                                                         <button type="submit" class="btn btn-primary">
                                                             <i class="mdi mdi-update mr-1"></i> <?php echo e(__('Update')); ?> </button>
                                                     </div>
-                                                </div> <!-- end col -->
-                                            </div> <!-- end row -->
+                                                </div>
+                                                <div class="col-lg-6 text-center pt-5 pl-5 pr-5">
+                                                    <img <?php if($user->avatar): ?> src="<?php echo e(asset('/storage/avatars/'.$user->avatar)); ?>" <?php else: ?> avatar="<?php echo e($user->name); ?>" <?php endif; ?> id="myAvatar" alt="user-image" class="rounded-circle img-thumbnail w-100">
+                                                </div>
+                                            </div>
                                         </form>
-                                        <?php if($user->avatar!=''): ?>
-                                            <form action="<?php echo e(route('delete.avatar')); ?>" method="post" id="delete_avatar">
-                                                <?php echo csrf_field(); ?>
-                                                <?php echo method_field('DELETE'); ?>
-                                            </form>
-                                        <?php endif; ?>
                                     </div>
                                     <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                                         <form method="post" action="<?php echo e(route('update.password')); ?>">

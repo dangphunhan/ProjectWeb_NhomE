@@ -12,30 +12,6 @@
   </div>
 </div>
 <ul class="navbar-nav navbar-right">
-  <?php if(isset($currantWorkspace) && $currantWorkspace && $currantWorkspace->permission == 'Owner'): ?>
-    <?php
-      $currantLang = basename(App::getLocale());
-    ?>
-  <li class="dropdown dropdown-list-toggle">
-    <a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg">
-      <span class="align-middle"><?php echo e(Str::upper($currantLang)); ?></span>
-      <i class="mdi mdi-chevron-down"></i>
-    </a>
-    <div class="dropdown-menu dropdown-list dropdown-menu-right">
-      <?php $__currentLoopData = $currantWorkspace->languages(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $lang): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-        <?php if($currantLang != $lang): ?>
-        <!-- item-->
-          <a href="<?php echo e(route('change_lang_workspace',[$currantWorkspace->id,$lang])); ?>" class="dropdown-item">
-            <span class="align-middle"><?php echo e(Str::upper($lang)); ?></span>
-          </a>
-        <?php endif; ?>
-      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-      <a href="<?php echo e(route('lang_workspace',[$currantWorkspace->slug,$currantWorkspace->lang])); ?>" class="dropdown-item notify-item">
-        <span class="align-middle"><?php echo e(__('Create & Customize')); ?></span>
-      </a>
-    </div>
-  </li>
-  <?php endif; ?>
   <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
     <img <?php if(Auth::user()->avatar): ?> src="<?php echo e(asset('/storage/avatars/'.Auth::user()->avatar)); ?>" <?php else: ?> avatar="<?php echo e(Auth::user()->name); ?>" <?php endif; ?> alt="user-image" class="rounded-circle mr-1">
     <div class="d-sm-none d-lg-inline-block">Hi, <?php echo e(Auth::user()->name); ?></div></a>

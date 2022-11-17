@@ -19,25 +19,11 @@
                   <i class="dripicons-briefcase"></i>
                   <span> <?php echo e(__('Projects')); ?> </span>
               </a>
-          </li>
+          </li> 
           <li class="<?php echo e((Request::route()->getName() == 'users.index') ? ' active' : ''); ?>">
               <a href="<?php echo e(route('users.index',$currantWorkspace->slug)); ?>">
                   <i class="dripicons-network-3"></i>
                   <span> <?php echo e(__('Users')); ?> </span>
-              </a>
-          </li>
-          <?php if($currantWorkspace->creater->id == Auth::user()->id): ?>
-              <li class="<?php echo e((Request::route()->getName() == 'clients.index') ? ' active' : ''); ?>">
-                  <a href="<?php echo e(route('clients.index',$currantWorkspace->slug)); ?>">
-                      <i class="dripicons-user"></i>
-                      <span> <?php echo e(__('Clients')); ?> </span>
-                  </a>
-              </li>
-          <?php endif; ?>
-          <li class="<?php echo e((Request::route()->getName() == 'calender.index') ? ' active' : ''); ?>">
-              <a href="<?php echo e(route('calender.index',$currantWorkspace->slug)); ?>">
-                  <i class="dripicons-calendar"></i>
-                  <span> <?php echo e(__('Calendar')); ?> </span>
               </a>
           </li>
           <li class="<?php echo e((Request::route()->getName() == 'notes.index') ? ' active' : ''); ?>">

@@ -33,6 +33,7 @@
 
     <div class="row">
         @foreach ($projects as $project)
+
         <div class="col-12 col-sm-12 col-lg-6 animated filter {{$project->status}}">
             <div class="card author-box card-primary">
                 <div class="card-body">
@@ -48,6 +49,7 @@
                                     @method('DELETE')
                                 </form>
                                 <a href="#" class="dropdown-item" class="dropdown-item" data-ajax-popup="true" data-size="lg" data-title="{{ __('Invite Users') }}" data-url="{{route('projects.invite.popup',[$currantWorkspace->slug,$project->id])}}"><i class="mdi mdi-email-outline mr-1"></i>{{ __('Invite')}}</a>
+                                {{-- <a href="#" class="dropdown-item" data-ajax-popup="true" data-size="lg" data-title="{{ __('Share to Clients') }}" data-url="{{route('projects.share.popup',[$currantWorkspace->slug,$project->id])}}"><i class="mdi mdi-email-outline mr-1"></i>{{ __('Share')}}</a> --}}
                             @else
                                 <a href="#" onclick="(confirm('Are you sure ?')?document.getElementById('leave-form-{{$project->id}}').submit(): '');" class="dropdown-item"><i class="mdi mdi-exit-to-app mr-1"></i>{{ __('Leave')}}</a>
                                 <form id="leave-form-{{$project->id}}" action="{{ route('projects.leave',[$currantWorkspace->slug,$project->id]) }}" method="POST" style="display: none;">
@@ -61,7 +63,7 @@
 
                     <div class="author-box-name">
 
-                        <a href="#" title="{{ $project->name }}" class="text-title">{{ $project->name }}</a>
+                        <a href="{{route('projects.show',[$currantWorkspace->slug,$project->id])}}" title="{{ $project->name }}" class="text-title">{{ $project->name }}</a>
 
                     </div>
                     <div class="author-box-job">
@@ -79,6 +81,16 @@
                             {{Str::limit($project->description, $limit = 100, $end = '...')}}
                         </p>
                     </div>
+                    <p class="mb-1">
+                        <span class="pr-2 text-nowrap mb-2 d-inline-block">
+                            <i class="mdi mdi-format-list-bulleted-type text-muted"></i>
+                            <b>{{$project->countTask()}}</b> {{ __('Tasks')}}
+                        </span>
+                        <span class="text-nowrap mb-2 d-inline-block">
+                            <i class="mdi mdi-comment-multiple-outline text-muted"></i>
+                            <b>{{$project->countTaskComments()}}</b> {{ __('Comments')}}
+                        </span>
+                    </p>
 
                     @foreach($project->users as $user)
 
@@ -89,7 +101,7 @@
                     @endforeach
 
                     <div class="float-right mt-sm-0 mt-3">
-                        <a href="#" class="btn btn-sm btn-primary">{{__('View More')}} <i class="dripicons-arrow-right"></i></a>
+                        <a href="{{route('projects.show',[$currantWorkspace->slug,$project->id])}}" class="btn btn-sm btn-primary">{{__('View More')}} <i class="dripicons-arrow-right"></i></a>
                     </div>
 
                 </div>
