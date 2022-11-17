@@ -4,11 +4,6 @@
   </ul>
 </div>
 <ul class="navbar-nav navbar-right">
-  @if(isset($currantWorkspace) && $currantWorkspace && $currantWorkspace->permission == 'Owner')
-    @php
-      $currantLang = basename(App::getLocale());
-    @endphp
-  @endif
   <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
     <img @if(Auth::user()->avatar) src="{{asset('/storage/avatars/'.Auth::user()->avatar)}}" @else avatar="{{ Auth::user()->name }}" @endif alt="user-image" class="rounded-circle mr-1">
     <div class="d-sm-none d-lg-inline-block">Hi, {{ Auth::user()->name }}</div></a>

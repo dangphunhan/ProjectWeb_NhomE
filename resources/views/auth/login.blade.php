@@ -17,7 +17,6 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <a href="{{ route('password.request') }}" class="text-muted float-right"><small>{{ __('Forgot your password?') }}</small></a>
                     <label for="password">{{ __('Password') }}</label>
                     <input class="form-control @error('password') is-invalid @enderror" type="password" name="password" required autocomplete="current-password" id="password" placeholder="{{ __('Enter Your Password') }}">
                     @error('password')
@@ -28,8 +27,7 @@
                 </div>
                 <div class="form-group mb-3">
                     <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="checkbox-signin" name="remember" {{ old('remember') ? 'checked' : '' }}>
-                        <label class="custom-control-label" for="checkbox-signin">{{ __('Remember Me') }}</label>
+                        <input type="checkbox" class="custom-control-input" id="checkbox-signin" name="remember" {{ old('remember') ? 'checked' : '' }}>                       {{-- <label class="custom-control-label" for="checkbox-signin">{{ __('Remember Me') }}</label> --}}
                     </div>
                 </div>
                 <div class="form-group mb-0 text-center">

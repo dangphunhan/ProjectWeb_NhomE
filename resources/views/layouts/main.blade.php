@@ -103,6 +103,19 @@
 <script src="{{ asset('assets/js/scrollreveal.min.js') }}"></script>
 <script src="{{ asset('assets/js/custom.js') }}"></script>
 
+@stack('scripts')
+
+@if ($message = Session::get('success'))
+    <script>toastr('Success','{!! $message !!}','success')</script>
+@endif
+
+@if ($message = Session::get('error'))
+    <script>toastr('Error','{!! $message !!}','error')</script>
+@endif
+
+@if ($message = Session::get('info'))
+    <script>toastr('Info','{!! $message !!}','info')</script>
+@endif
 </body>
 
 </html>
